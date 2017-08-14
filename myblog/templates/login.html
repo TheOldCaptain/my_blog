@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Login</title>
+    {% load staticfiles %}
+
+	<link rel="stylesheet" href="{% static '/blog/css/login.css' %}">
+
+
+</head>
+
+<body>
+
+	<div id="login">
+
+		<h2><span class="fontawesome-lock"></span>Sign In</h2>
+
+
+		<form action="{% url 'blog:login_action' %}" method="POST">
+            {% csrf_token %}
+			<fieldset>
+                <input type="hidden" name="article_id" value="{{ article_id | default:'0' }}">
+				<p><label for="username">Username</label></p>
+				<p><input type="username"  name="username" > </p>
+
+				<p><label for="password">Password</label></p>
+				<p><input type="password" name="password"></p>
+
+				<p><input type="submit" value="Sign In"></p>
+
+			</fieldset>
+
+		</form>
+
+	</div>
+
+</body>
+</html>
